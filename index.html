@@ -1,39 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Soy Hleb</title>
+<meta charset="UTF-8">
+<title>Soy Hleb</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle, #050505, #000);
+    font-family: 'Creepster', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* текст */
+.title {
+    font-size: 60px;
+    color: #ff2c2c;
+    text-shadow: 0 0 20px red, 0 0 50px darkred;
+}
+
+/* 👁 глаз */
+.eye {
+    width: 220px;
+    height: 110px;
+    background: white;
+    border-radius: 110px / 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px red;
+}
+
+.pupil {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, black 40%, red 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 85px;
+}
+
+.eyelid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: -100%;
+}
+
+/* кнопка */
+.btn {
+    padding: 15px 60px;
+    font-size: 30px;
+    color: #ff2c2c;
+    background: black;
+    border: 2px solid red;
+    cursor: pointer;
+    box-shadow: 0 0 15px red, 0 0 40px darkred;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+</style>
+
 </head>
+
 <body>
 
 <div class="container">
-    
-    <div class="left">
-        <div class="text glitch">Soy Hleb</div>
-        <button class="creepy-btn">LEER</button>
-        <button onclick="goMenu()">LEER</button>
 
-<script>
-function goMenu() {
-    window.location.href = "menu.html";
-}
-</script>
+    <div class="title">Soy Hleb</div>
+
+    <div class="eye">
+        <div class="pupil"></div>
+        <div class="eyelid"></div>
     </div>
 
-    <div class="eye-container">
-        <div class="eye">
-            <div class="veins"></div>
-            <div class="pupil"></div>
-            <div class="eyelid"></div>
-        </div>
-    </div>
+    <!-- КНОПКА -->
+    <a href="menu.html">
+        <button class="btn">LEER</button>
+    </a>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+/* 👁 мигание */
+const eyelid = document.querySelector('.eyelid');
+
+function blink() {
+    eyelid.style.top = '0';
+    setTimeout(() => {
+        eyelid.style.top = '-100%';
+    }, 150);
+}
+
+setInterval(blink, 3000);
+</script>
 
 </body>
 </html>
