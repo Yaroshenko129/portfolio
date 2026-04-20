@@ -51,6 +51,7 @@ body {
     position: absolute;
     top: 30px;
     left: 85px;
+    transition: 0.3s;
 }
 
 .eyelid {
@@ -99,9 +100,17 @@ body {
 </div>
 
 <script>
-/* 👁 мигание */
+const pupil = document.querySelector('.pupil');
 const eyelid = document.querySelector('.eyelid');
 
+/* 👁 случайное движение глаза */
+function moveEye() {
+    const x = (Math.random() - 0.5) * 60;
+    const y = (Math.random() - 0.5) * 40;
+    pupil.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+/* 👁 мигание */
 function blink() {
     eyelid.style.top = '0';
     setTimeout(() => {
@@ -109,6 +118,8 @@ function blink() {
     }, 150);
 }
 
+/* интервалы */
+setInterval(moveEye, 1200);
 setInterval(blink, 3000);
 </script>
 
