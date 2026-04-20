@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle, #050505, #000);
+    font-family: 'Creepster', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* 👁 глаз */
+.eye {
+    width: 220px;
+    height: 110px;
+    background: white;
+    border-radius: 110px / 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px red;
+}
+
+.pupil {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, black 40%, red 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 85px;
+}
+
+.eyelid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: -100%;
+    transition: 0.2s;
+}
+
+/* 🔘 кнопки */
+.btn {
+    position: relative;
+    padding: 20px 80px;
+    font-size: 32px;
+    color: #ff2c2c;
+    background: black;
+    border: 2px solid red;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 0 15px red, 0 0 40px darkred;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* 👹 руки */
+.hand {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    display: flex;
+    gap: 5px;
+}
+
+.hand.left { left: -80px; }
+.hand.right { right: -80px; }
+
+.finger {
+    width: 12px;
+    height: 40px;
+    background: linear-gradient(to bottom, #200000, black);
+    border-radius: 10px;
+    position: relative;
+}
+
+.finger::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 12px solid #aaa;
+}
+
+/* анимации */
+@keyframes grabLeft {
+    0% { left: -80px; opacity: 0; }
+    50% { left: 10px; opacity: 1; }
+    100% { left: -80px; opacity: 0; }
+}
+
+@keyframes grabRight {
+    0% { right: -80px; opacity: 0; }
+    50% { right: 10px; opacity: 1; }
+    100% { right: -80px; opacity: 0; }
+}
+
+.grab .left { animation: grabLeft 0.5s ease; }
+.grab .right { animation: grabRight 0.5s ease; }
+
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+
+    <!-- 👁 глаз -->
+    <div class="eye">
+        <div class="pupil"></div>
+        <div class="eyelid"></div>
+    </div>
+
+    <!-- Contacto -->
+    <button class="btn" onclick="goContacto()">
+        <div class="hand left">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        <div class="hand right">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        Contacto
+    </button>
+
+    <!-- Acerca -->
+    <button class="btn" onclick="goAcerca()">
+        <div class="hand left">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        <div class="hand right">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        Acerca de mi
+    </button>
+
+    <!-- Servicios -->
+    <button class="btn" onclick="goServicios()">
+        <div class="hand left">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        <div class="hand right">
+            <div class="finger"></div><div class="finger"></div><div class="finger"></div>
+        </div>
+        Servicios
+    </button>
+
+</div>
+
+<script>
+const buttons = document.querySelectorAll('.btn');
+
+/* 👹 руки */
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.add('grab');
+        setTimeout(() => btn.classList.remove('grab'), 500);
+    });
+});
+
+/* 👁 мигание */
+const eyelid = document.querySelector('.eyelid');
+
+function blink() {
+    eyelid.style.top = '0';
+    setTimeout(() => {
+        eyelid.style.top = '-100%';
+    }, 150);
+}
+
+setInterval(blink, 3000);
+
+/* переходы */
+function goContacto() {
+    window.location.href = "contacto.html";
+}
+
+function goAcerca() {
+    window.location.href = "acerca.html";
+}
+
+function goServicios() {
+    window.location.href = "servicios.html";
+}
+</script>
+
+</body>
+</html>

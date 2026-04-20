@@ -1,125 +1,113 @@
 body {
     margin: 0;
+    background: radial-gradient(circle, #0a0a0a, #000000);
+    color: #ff2c2c;
+    font-family: 'Creepster', cursive;
     overflow: hidden;
-    font-family: Arial;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 120px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    font-size: 70px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px darkred;
+}
+
+.glitch {
+    animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* КНОПКА */
+.creepy-btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 28px;
+    font-family: 'Creepster', cursive;
+    color: #ff2c2c;
     background: black;
+    border: 2px solid red;
+    cursor: pointer;
+    box-shadow: 0 0 10px red, 0 0 30px darkred;
+    transition: 0.3s;
 }
 
-canvas {
-    display: block;
+.creepy-btn:hover {
+    transform: scale(1.1);
+    background: #220000;
+    box-shadow: 0 0 30px red, 0 0 80px crimson;
 }
 
-/* ЛЕЙБЛЫ */
-.label {
-    position: absolute;
-    color: #00ffff;
-    font-size: 14px;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    text-shadow: 0 0 10px #00ffff;
-    font-weight: bold;
-}
-
-/* ИНФО БОКС */
-#infoBox {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+/* ГЛАЗ */
+.eye {
     width: 260px;
-
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(15px);
-
-    padding: 20px;
-    border-radius: 15px;
-
-    color: white;
-
-    border: 1px solid rgba(0,255,255,0.3);
-
-    /* 🔥 ВАЖНО */
+    height: 130px;
+    background: #fff;
+    border-radius: 130px / 70px;
+    position: relative;
     overflow: hidden;
-
-    opacity: 0;
-    transform: translateY(-40px) scale(0.9);
-    transition: all 0.5s ease;
+    box-shadow: 0 0 40px red;
 }
 
-/* ВКЛЮЧЕНИЕ */
-#infoBox.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-
-    box-shadow: 
-        0 0 20px rgba(0,255,255,0.5),
-        0 0 50px rgba(0,255,255,0.3);
-}
-
-/* 🔥 СВЕТ ВНУТРИ РАМКИ */
-#infoBox::before {
-    content: "";
+.veins {
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
+    width: 100%;
     height: 100%;
-
-    background: linear-gradient(
-        120deg,
+    background: repeating-linear-gradient(
+        45deg,
         transparent,
-        rgba(0,255,255,0.25),
-        transparent
+        transparent 10px,
+        rgba(255,0,0,0.2) 12px
     );
-
-    pointer-events: none;
 }
 
-/* АНИМАЦИЯ ТОЛЬКО ВНУТРИ */
-#infoBox.show::before {
-    animation: shineInside 2.5s infinite linear;
+.pupil {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, black 40%, red 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    box-shadow: 0 0 20px red;
+    transition: transform 0.1s;
 }
 
-@keyframes shineInside {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
+.eyelid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: -100%;
+    left: 0;
 }
 
-/* ЗАГОЛОВОК */
-#infoBox h2 {
-    margin-bottom: 10px;
-    color: #00ffff;
+.eye {
+    animation: pulse 2s infinite;
 }
 
-/* ТЕКСТ */
-#infoBox p {
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* ИКОНКИ */
-.icon {
-    width: 20px;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-/* ССЫЛКИ */
-.link {
-    color: #00ffff;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
-
-/* СКРЫТИЕ */
-.hidden {
-    display: none;
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px red; }
+    50% { box-shadow: 0 0 60px crimson; }
+    100% { box-shadow: 0 0 20px red; }
 }

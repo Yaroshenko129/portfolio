@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Servicios</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle, #050505, #000);
+    color: #ff2c2c;
+    font-family: 'Creepster', cursive;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* БЛОК ТЕКСТА */
+.text {
+    font-size: 26px;
+    max-width: 800px;
+    text-align: left;
+    line-height: 1.6;
+
+    text-shadow: 
+        0 0 10px red,
+        0 0 30px darkred;
+
+    animation: flicker 2s infinite;
+}
+
+/* заголовок */
+.title {
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* список */
+ul {
+    margin-top: 20px;
+}
+
+/* мерцание */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* кнопка назад */
+.back {
+    margin-top: 50px;
+    padding: 15px 40px;
+    font-size: 28px;
+    font-family: 'Creepster', cursive;
+    color: #ff2c2c;
+    background: black;
+    border: 2px solid red;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px red, 0 0 40px darkred;
+    transition: 0.3s;
+}
+
+.back:hover {
+    transform: scale(1.1);
+    background: #220000;
+    box-shadow: 0 0 30px red, 0 0 80px crimson;
+}
+</style>
+
+</head>
+<body>
+
+<div class="text">
+
+<div class="title">Servicios</div>
+
+<p>Esto son servicios, amigo mío!</p>
+
+<ul>
+<li>• Crear un sitio web desde 30€ (depende de la escala)</li>
+<li>• Pago después de que haga tu sitio web</li>
+<li>• Tienes opción (comprar y decir que no te gustó)</li>
+<li>• Contacto conmigo en la pestaña "Contacto"</li>
+<li>• El tiempo de trabajo depende de la escala</li>
+<li>• Durante el trabajo puedes contactarme y añadir ideas</li>
+<li>• Puedes pedirme cambios por un pago adicional (si el sitio ya está publicado)</li>
+</ul>
+
+<p style="margin-top:20px;">Gracias por la cooperación</p>
+
+</div>
+
+<button class="back" onclick="goBack()">BACK</button>
+
+<script>
+function goBack() {
+    window.location.href = "menu.html";
+}
+</script>
+
+</body>
+</html>
